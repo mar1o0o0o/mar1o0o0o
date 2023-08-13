@@ -81,13 +81,14 @@ def game(wordlist, wordlist_rand):
                     break
         if guess != "pass":
             print("Correct!")
-            print("\n")
             wordlist_rand.pop(0)
             wordlist.pop(0)
             points += 1
+        print("\n")
         time_end = time.time()
         if (time_end - time_start) > 60:
             print("Time's over!")
+            print("\n")
             return points, undertimelimit, no_skip
     while len(skipped_words) > 0:
         no_skip = False
@@ -104,15 +105,18 @@ def game(wordlist, wordlist_rand):
                     break
             if guess != "pass":
                 print("Correct!")
-                print("\n")
                 skipped_words_rand.pop(skipped_words_index)
                 skipped_words.pop(skipped_words_index)
                 points += 1
+            print("\n")
             time_end = time.time()
             if (time_end - time_start) > 60:
                 print("Time's over!")
+                print("\n")
                 return points, undertimelimit, no_skip
+    print("\n")
     print("Game finished!")
+    print("\n")
     undertimelimit = True
     return points, undertimelimit, no_skip
 
@@ -144,8 +148,10 @@ def playagain_prompt(play, totalpoints):
         input()
     elif choice.lower() == "no":
         play = False
+        print("\n")
         print("Ok! Your total score is " + str(totalpoints) + ".")
         print("Thanks for playing my game!")
+        print("\n")
     return play
 
 main()
